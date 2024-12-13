@@ -1,1 +1,12 @@
 E:\00_Betami\10_Beta_tutorials_GMDSI\Tutorials\02a_Beta_part0_02_intro_to_freyberg_model\12_Notes.txt
+
+
+
+git add .
+
+git commit -m "001"
+
+git push origin 
+
+
+https://www.theserverside.com/video/How-to-use-the-git-remote-add-origin-command-to-push-remotely

@@ -1,10 +1,10 @@
 Open Git Bash Here		#
 
+
 E:\00_Betami\10_Beta_tutorials_GMDSI\Tutorials\02a_Beta_part0_02_intro_to_freyberg_model
 
 Shift Insert			#
 
-conda activate gmdsitut
-jupyter notebook
+
 
 New	Notebook	Name__!
