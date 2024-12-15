@@ -15,11 +15,11 @@ CTRL C
 1º Environment 
 	Anaconda Prompt 
 		conda env create -f environment_gmdsitut.yml
----------------------------------------------------------------------------------------
-2º Environment 
-	Anaconda Prompt 
-		conda env create -f environment_02.yml
----------------------------------------------------------------------------------------
-2º Environment 
-	Anaconda Prompt 
+		conda env create -f environment_pyclass.yml
 		conda env create -f environment_Flopy_Example.yml
+
+
+conda activate gmdsitut
+conda activate pyclass
+conda activate flopy_example
+jupyter notebook
