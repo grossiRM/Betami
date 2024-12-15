@@ -1,4 +1,3 @@
----------------------------------------------------------------------------------------
 conda activate gmdsitut
 jupyter notebook
 
@@ -14,6 +13,8 @@ https://www.theserverside.com/video/How-to-use-the-git-remote-add-origin-command
 CTRL C
 ---------------------------------------------------------------------------------------
 1º Environment 
+	Anaconda Prompt 
+		conda env create -f environment_gmdsitut.yml
 ---------------------------------------------------------------------------------------
 2º Environment 
 	Anaconda Prompt 
