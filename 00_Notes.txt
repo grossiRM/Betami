@@ -7,7 +7,7 @@ E:\00_Betami\10_Beta_tutorials_GMDSI\Tutorials\02a_Beta_part0_02_intro_to_freybe
 
 
 
-
+Shift Insert			#
 git init
 git add .
 git commit -m "001"
