@@ -1,0 +1,308 @@
+U.S. Geological Survey (USGS)                               MF2005-FMP2
+
+NOTE: Any use of trade, product or firm names is for descriptive purposes
+      only and does not imply endorsement by the U.S. Government.
+
+NAME
+     MF2005-FMP2 - Modular three-dimensional finite-difference ground-water
+               model (MODFLOW-2005 ver 1.6.01) with the Farm Process
+
+ABSTRACT
+     The ability to dynamically simulate the integrated supply-and-demand 
+     components of irrigated agricultural is needed to thoroughly understand 
+     the interrelation between surface water and groundwater flow in areas where 
+     the water-use by vegetation is an important component of the water budget. 
+     To meet this need, the computer program Farm Process (FMP1) was updated and 
+     refined for use with the U.S. Geological Survey’s MODFLOW-2005 groundwater-flow model, 
+     and is referred to as MF2005-FMP2. The updated program allows the simulation, 
+     analysis, and management of nearly all components of human and natural water use. 
+     MF2005-FMP2 represents a complete hydrologic model that fully links the movement 
+     and use of groundwater, surface water, and imported water for water consumption 
+     of irrigated agriculture, but also of urban use, and of natural vegetation. Supply 
+     and demand components of water use are analyzed under demand-driven and supply-constrained 
+     conditions. From large- to small-scale settings, the MF2005-FMP2 has the unique set of 
+     capabilities to simulate and analyze historical, present, and future conditions. 
+     MF2005-FMP2 facilitates the analysis of agricultural water use where little data 
+     is available for pumpage, land use, or agricultural information. The features presented 
+     in this new version of FMP2 along with the linkages to the Streamflow Routing (SFR), 
+     Multi-Node Well (MNW), and Unsaturated Zone Flow (UZF) Packages prevents mass loss to 
+     an open system and helps to account for "all of the water everywhere and all of the time."
+     
+     The first version, FMP1 for MODFLOW-2000, is limited to (a) transpiration uptake from 
+     unsaturated root zones, (b) on-farm efficiency defined solely by farm and not by crop type, 
+     (c) a simulation of water use and returnflows related only to irrigated agriculture and not 
+     also to non-irrigated vegetation, (d) a definition of consumptive use as potential crop 
+     evapotranspiration, (e) percolation being instantly recharged to the uppermost active aquifer, 
+     (f) automatic routing of returnflow from runoff either to reaches of tributary stream segments 
+     adjacent to a farm or to one reach nearest to the farm’s lowest elevation, (g) farm-well pumping 
+     from cell locations regardless of whether an irrigation requirement from these cells exists or not, 
+     and (h) specified non-routed water transfers from an undefined source outside the model domain.
+     
+     All of these limitations are overcome in MF2005-FMP2. The new features include (a) simulation 
+     of transpiration uptake from variably saturated, fully saturated, or ponded root zones (for example, 
+     for crops like rice or riparian vegetation), (b) definition of on-farm efficiency not only by farm 
+     but also by crop, (c) simulation of water use and returnflow from non-irrigated vegetation (for 
+     example, rain-fed agriculture or native vegetation), (d) use of crop coefficients and reference 
+     evapotranspiration, (e) simulation of the delay between percolation from farms through the unsaturated 
+     zone and recharge into the uppermost active aquifer by linking FMP2 to the UZF Package, (f) an option 
+     to manually control the routing of returnflow from farm runoff to streams, (g) an option to limit 
+     pumping to wells located only in cells where an irrigation requirement exists, and (h) simulation 
+     of water transfers to farms from a series of well fields (for example, recovery well field of an 
+     aquifer-storage-and-recovery system, ASR).
+     
+     In addition to the output of an economic budget for each farm between irrigation demand and supply 
+     ("Farm Demand and Supply Budget" in FMP1), a new output option called "Farm Budget" was created 
+     for FMP2, which allows the user to track all physical flows into and out of a water accounting 
+     unit at all times. Such a unit can represent individual farms, farming districts, natural areas, 
+     or urban areas.
+     
+     The example model demonstrates the application of MF2005-FMP2 with delayed recharge through 
+     an unsaturated zone, rejected infiltration in a riparian area, changes in demand owing to 
+     deficiency in supply, and changes in multi-aquifer pumpage owing to constraints imposed through 
+     the Farm Process and the MNW Package.
+
+METHOD
+     The ground-water flow equation is solved using the finite-difference
+     approximation.  The flow region is subdivided into blocks in which
+     the medium properties are assumed to be uniform.  In plan view the
+     blocks are made from a grid of mutually perpendicular lines that may
+     be variably spaced.  Model layers can have varying thickness.  A flow
+     equation is written for each block, called a cell.  Several solvers
+     are provided for solving the resulting matrix problem; the user can
+     choose the best solver for the particular problem.  Flow-rate and
+     cumulative-volume balances from each type of inflow and outflow are
+     computed for each time step.
+
+
+HISTORY
+      MF2005-FMP2 Version 1.0.00 MODFLOW-2005 Version 1.6.01 (3/4/2009)  
+          with the Farm Process Version 2.0 with modifications to the MULT,
+          HYDMOD, SFR, UZF, and SUB Packages.
+
+
+DATA REQUIREMENTS
+     In order to use MODFLOW, initial conditions, hydraulic properties,
+     and stresses must be specified for every model cell in the finite-
+     difference grid. Input data are read from files.
+
+
+SYSTEM REQUIREMENTS
+     MODFLOW-2005 is written primarily in Fortran 90. Only the GMG solver
+     package is written in C.  The code has been used on UNIX-based
+     computers and personal computers running various forms of the Microsoft
+     Windows operating system.
+
+
+FUNTIONALITY
+     This version of MODFLOW includes the following functionality that is
+     documented in Harbaugh (2005).
+
+         BAS -- Basic Package
+         BCF -- Block-Centered Flow Package
+         LPF -- Layer-Property Flow Package
+         HFB -- Horizontal Flow Barrier Package
+         CHD -- Time-Variant Specified-Head Option
+         RIV -- River Package
+         DRN -- Drain Package
+         WEL -- Well Package
+         GHB -- General Head Boundary Package
+         RCH -- Recharge Package
+         EVT -- Evapotranspiration Package
+         SIP -- Strongly Implicit Procedure Package
+         PCG -- Preconditioned Conjugate Gradient Package
+         DE4 -- Direct solver
+
+      The following functionality is also included. This functionality is
+      documented in separate reports for use in earlier versions of MODFLOW.
+      Conversion of this functionality to work with MF2005-FMP2 is
+      documented in separate files that are provided with the MF2005-FMP2
+      distribution.
+         STR -- Streamflow-Routing Package
+         FHB -- Flow and Head Boundary Package
+         IBS -- Interbed Storage Package
+         HUF -- Hydrogeologic-Unit Flow Package
+         MNW -- Multi-Node Well Package
+         ETS -- Evapotranspiration with a Segmented Function Package
+         DRT -- Drains with Return Flow Package
+         RES -- Reservoir Package
+         SUB -- Subsidence Package
+         OBS -- Observation Process
+         SFR -- Streamflow-Routing Package
+         LAK -- Lake Package
+         UZF -- Unsaturated Zone Package
+         GAG -- Gage Package
+         SWT -- Subsidence and Aquifer-System Compaction Package +/- Water Table Conditions
+         LMT -- Link to the MT3DMS contaminant-transport model
+         HYD -- HYDMOD Hydrograph capability for groundwater, surface-water, and subsidence time-series data
+
+Unlike MF2000-FMP1, MF2005-FMP2 does not support a parameter-estimation
+process. Users of MF2005-FMP2 are encouraged to take advantage of
+'clip-on' parameter-estimation programs such as UCODE_2005. UCODE_2005 and
+supporting documentation are available at:
+         http://typhoon.mines.edu/freeware/ucode/
+
+DOCUMENTATION
+
+  The basic documentation for MODFLOW-2005 is contained in:
+
+Harbaugh, A.W., 2005, MODFLOW-2005, the U.S. Geological Survey modular
+ground-water model -- the Ground-Water Flow Process: U.S. Geological Survey
+Techniques and Methods 6-A16, variously p.
+
+  The FMP Process is documented in:
+
+Schmid, W., Hanson, R.T., Maddock III, T.M., and Leake, S.A., 2006, 
+User’s guide for the Farm Package (FMP1) for the U.S. Geological Survey’s 
+modular three-dimensional finite-difference ground-water flow model, MODFLOW-2000: 
+U.S. Geological Survey Techniques and Scientific Methods Report Book 6, Chapter A17, 
+127p. (http://pubs.usgs.gov/tm/2006/tm6A17/)
+
+Schmid, Wolfgang, and Hanson R.T., 2009, The Farm Process Version 2 (FMP2) for 
+MODFLOW-2005 - Modifications and Upgrades to FMP1: U.S. Geological Survey Techniques 
+in Water Resources Investigations, Book 6, Chapter A32, 102p. (http://pubs.usgs.gov/tm/tm6a32/)
+
+  The STR Package is documented in:
+
+Prudic, D.E., 1989, Documentation of a computer program to simulate
+stream-aquifer relations using a modular, finite-difference, ground-water
+flow model: U.S. Geological Survey Open-File Report 88-729, 113 p.
+
+  The FHB Package is documented in:
+
+Leake, S.A., and Lilly, M.R., 1997, Documentation of a computer program
+(FHB1) for assignment of transient specified-flow and specified-head
+boundaries in applications of the modular finite- difference ground-water
+flow model (MODFLOW): U.S. Geological Survey Open-File Report 97-571, 50 p.
+
+  The IBS Package is documented in:
+
+Leake, S.A. and Prudic, D.E., 1991, Documentation of a computer program
+to simulate aquifer-system compaction using the modular
+finite-difference ground-water flow model: U.S. Geological Survey
+Techniques of Water-Resources Investigations, Book 6, Chapter A2, 68 p.
+
+  The HUF Package is documented in:
+
+Anderman, E.R., and Hill, M.C., 2000, MODFLOW-2000, the U.S. Geological
+Survey modular ground-water model -- Documentation of the Hydrogeologic-
+Unit Flow (HUF) Package: U.S. Geological Survey Open-File Report 00-342,
+89 p.
+     
+Anderman, E.R., Kipp, K.L., Hill, M.C., Valstar, Johan, and Neupauer,
+R.M., 2002, MODFLOW-2000, the U.S. Geological Survey modular ground-water
+model -- Documentation of the Model-Layer Variable-Direction Horizontal
+Anisotropy (LVDA) capability of the Hydrogeologic-Unit Flow (HUF) Package:
+U.S. Geological Survey Open-File Report 02-409, 60 p.
+
+Anderman, E.R., and Hill, M.C., 2003, MODFLOW-2000, the U.S. Geological
+Survey modular ground-water model -- Three additions to the
+Hydrogeologic-Unit Flow (HUF) Package: Alternative storage for the
+uppermost active cells, Flows in hydrogeologic units, and the
+Hydraulic-coductivity depth-dependence (KDEP) capability:U.S. Geological
+Survey Open-File Report 03-347, 36 p.
+
+  The MNW Package is documented in:
+
+Halford, K.J. and Hanson, R.T., 2002, User guide for the drawdown-limited,
+multi-node well (MNW) package for the U.S. Geological Survey's modular
+three-dimensional finite-difference ground-water flow model, versions
+MODFLOW-96 and MODFLOW-2000: U.S. Geological Survey Open-File Report
+02-293, 33 p.
+
+  The DRT and ETS Packages are documented in:
+
+Banta, E.R., 2000, MODFLOW-2000, the U.S. Geological Survey modular
+ground-water model -- documentation of packages for simulating
+evapotranspiration with a segmented function (ETS1) and drains with return
+flow (DRT1): U.S. Geological Survey Open-File Report 00-466, 127 p.
+
+  The RES Package is documented in:
+
+Fenske, J.P., Leake, S.A., and Prudic, D.E., 1996, Documentation of a
+computer program (RES1) to simulate leakage from reservoirs using the
+modular finite-difference ground-water flow model (MODFLOW): U.S.
+Geological Survey Open-File Report 96-364, 51 p.
+
+  The SUB Package is documented in:
+
+Hoffmann, Jorn, Leake, S.A., Galloway, D.L., and Wilson, A.M., 2003,
+MODFLOW-2000 ground-water model -- User guide to the Subsidence and
+Aquifer-System Compaction (SUB) Package: U.S. Geological Survey Open-File
+Report 03-233, 46 p.
+
+  The OBS Process is documented in:
+  
+Hill, M.C., Banta, E.R., Harbaugh, A.W., and Anderman, E.R., 2000,
+MODFLOW-2000, the U.S. Geological Survey modular ground-water model --
+User guide to the Observation, Sensitivity, and Parameter-Estimation
+Processes and three post-processing programs: U.S. Geological Survey
+Open-File Report 00-184, 209 p.
+
+See file obs.pdf for documentation of the OBS Process in MODFLOW-2005,
+including input instructions.
+
+  The SFR Package is documented in:
+
+Prudic, D.E., Konikow, L.F., and Banta, E.R., A new Streamflow-Routing
+(SFR1) Package to simulate stream-aquifer interaction with MODFLOW-2000:
+U.S. Geological Survey Open File Report 2004-1042, 95 p.
+
+Niswonger, R.G., and Prudic, D.E., 2005, Documentation of the
+Streamflow-Routing (SFR2) Package to include unsaturated flow beneath
+streams -- a modification to SFR1: U.S. Geological Techniques and Methods
+Book 6, Chapter A13, 47 p.
+
+  The UZF Package is documented in:
+
+Niswonger, R.G., Prudic, D.E., and Regan, R.S., 2006, Documentation of
+the Unsaturated-Zone Flow (UZF1) Package for modeling unsaturated flow
+between the land surface and the water table with MODFLOW-2005: U.S.
+Geological Techniques and Methods Book 6, Chapter A19, 62 p.
+  
+  The LAK Package is documented in:
+  
+Merritt, M.L., and Konikow, L.F., 2000, Documentation of a computer
+program to simulate lake-aquifer interaction using the MODFLOW ground-water
+flow model and the MOC3D solute-transport model: Water-Resources
+Investigations Report 00-4167, 146 p.
+
+  The GAG Package is documented as part of the above SFR and LAK
+  documentation.
+
+  The SWT Package is documented in:
+  
+Leake, S.A. and Galloway, D.L., 2007, MODFLOW ground-water model -- User
+guide to the Subsidence and Aquifer-System Compaction Package (SUB-WT) for
+water-table aquifers: U.S. Geological Survey Techniques and Methods 6-A23,
+42 p.
+
+  The LMT Package is documented in:
+  
+Zheng, Chunmiao, Hill, M.C., and Hsieh, P.A., 2001, MODFLOW-2000, the U.S.
+Geological Survey modular ground-water model - User guide to the LMT6
+package, the linkage with MT3DMS for multi-species mass transport modeling:
+U.S. Geological Survey Open-File Report 01-82, 43 p.
+
+   HYDMOD is documented in:
+
+Hanson, R.T. and Leake, S.A., 1999, Documentation of HYDMOD, a program for
+extracting and processing time-series data from the U.S. Geological
+Survey's modular three-dimensional finite-difference ground-water flow
+model: U.S. Geological Survey Open-File Report 98-564, 57 p.
+
+A separate file, hydmod7.pdf, documents the conversion for MODFLOW-2005.
+
+
+CONTACTS
+    U.S. Geological Survey
+    Office of Ground Water
+    411 National Center
+    Reston, VA 20192
+    (703) 648-5001
+    ogw_webmaster@usgs.gov
+
+    See
+
+      http://water.usgs.gov/software/ordering_documentation.html
+
+    for information on ordering printed copies of USGS publications.
