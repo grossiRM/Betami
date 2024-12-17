@@ -1,0 +1,5 @@
+
+https://water.usgs.gov/ogw/modflow/MODFLOW-2005-Guide/ground-water_flow_packages.html
+
+
+https://flopy.readthedocs.io/en/latest/Notebooks/groundwater_paper_example_1.html
