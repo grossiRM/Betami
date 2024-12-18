@@ -1,8 +1,0 @@
-conda activate Flopy
-
-E:\16_REPOS\00_Betami\04_Flopy
-
-09	Basic Flopy example
-10	Capture fraction example	just the first commands
-
-

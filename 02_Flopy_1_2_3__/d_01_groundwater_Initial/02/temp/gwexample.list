@@ -1,0 +1,11 @@
+                                  MODFLOW-2005     
+      U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
+                       VERSION 1.6.01 3/4/2009, with FMP2
+
+ LIST FILE: gwexample.list
+                         UNIT    2
+
+ OPENING gwexample.dis
+ FILE TYPE:DIS   UNIT   11   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+  BAS PACKAGE FILE HAS NOT BEEN OPENED.
