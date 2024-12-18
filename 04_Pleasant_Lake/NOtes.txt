@@ -1,0 +1,28 @@
+https://www.researchgate.net/scientific-contributions/Christian-D-Langevin-27343876
+
+https://stackoverflow.com/questions/71384718/converting-a-bunch-of-dat-filesimages-to-an-avi-file
+
+import glob
+import numpy
+import tifffile
+
+width = 2560
+height = 2160
+
+datfiles = glob.glob('*.dat')
+
+with tifffile.TiffWriter('datfiles.tif', bigtiff=False) as tif:
+    for datfile in datfiles:
+        data = numpy.fromfile(
+            datfile,
+            count=width * height * 3 // 2,  # 12 bit packed
+            offset=4,  # 4 byte integer header
+            dtype=numpy.uint8,
+        ).astype(numpy.uint16)
+        image = numpy.zeros(width * height, numpy.uint16)
+        image[0::2] = (data[1::3] & 15) | (data[0::3] << 4)
+        image[1::2] = (data[1::3] >> 4) | (data[2::3] << 4)
+        image.shape = height, width
+        tif.write(
+            image, photometric='minisblack', compression=None, metadata=None
+        )

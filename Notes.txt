@@ -1,7 +1,7 @@
 conda activate gmdsitut
 conda activate pyclass
 conda activate flopy_example
-conda activate Flopy
+conda activate Flopy			pleasant-lake-flopy-example
 jupyter notebook
 
 
