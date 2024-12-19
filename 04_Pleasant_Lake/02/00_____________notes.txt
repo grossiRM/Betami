@@ -1,0 +1,13 @@
+
+
+sim = mf6.MFSimulation	______________ (sim_name=model_name, version="mf6", exe_name="mf6", sim_ws=workspace)
+
+sim.write_simulation() 
+mfsim.nam
+pleasant.ims
+pleasant.tdis
+
+
+
+	new - 	06_nam
+Pleaseant   	01_dis, 02_ims, 03_npf, 04_oc, 05_tdis

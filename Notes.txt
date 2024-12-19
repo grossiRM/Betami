@@ -17,6 +17,8 @@ EnvironmentS
 		conda env create -f environment_pyclass.yml
 		conda env create -f environment_Flopy_Example.yml
 		conda env create -f environment_04_Flopy.yml
+		conda env create -f environment_api_demo.yml
+
 ---------------------------------------------------------------------------------------
 OPEN GIT BASH HERE
 CTRL INSERT
