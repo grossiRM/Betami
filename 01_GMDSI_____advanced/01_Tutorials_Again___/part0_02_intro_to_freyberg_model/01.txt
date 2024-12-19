@@ -1,9 +1,0 @@
-org_ws = os.path.join('..', '..', 'models', 'monthly_model_files_1lyr_newstress')
-
-sim_ws = os.path.join('freyberg_mf6')
-
-
-Folder freyberg_mf6	provisória
-
-
-loading data ('freyberg6', 'wel', 'period', 'stress_period_data'):
